@@ -37,6 +37,7 @@ public static class LineupService
 
                     // Rule 4: 3, 5, 7, 9, and 10 are the only players allowed to play 1B. When not playing 1B, they can play any other position.
                     if (positionToAssign == Position.OneB &&
+                        TimesHasPlayedPositions(innings, playerToPlace, [positionToAssign]) < 1 &&
                         playersAllowedToPlay1B.Contains(playerToPlace))
                         positionScores[positionToAssign] += 1;
 
