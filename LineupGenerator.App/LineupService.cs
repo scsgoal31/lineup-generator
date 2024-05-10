@@ -48,7 +48,7 @@ public static class LineupService
 
                     // Rule 1: Each player must play in the infield for at least two innings this game.
                     if (INFIELD.Contains(positionToAssign) &&
-                        TimesHasPlayedPositions(innings, playerToPlace, [positionToAssign]) < 2)
+                        TimesHasPlayedPositions(innings, playerToPlace, [Position.C]) + TimesHasPlayedPositions(innings, playerToPlace, [Position.P]) + TimesHasPlayedPositions(innings, playerToPlace, [Position.OneB]) + TimesHasPlayedPositions(innings, playerToPlace, [Position.TwoB]) + TimesHasPlayedPositions(innings, playerToPlace, [Position.ThreeB]) + TimesHasPlayedPositions(innings, playerToPlace, [Position.SS]) < 2)
                         positionScores[positionToAssign] += 1;
                 }
 
