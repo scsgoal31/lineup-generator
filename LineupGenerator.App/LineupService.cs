@@ -48,7 +48,7 @@ public static class LineupService
 
                     // Rule 1: Each player must play in the infield for at least two innings this game.
                     if (INFIELD.Contains(positionToAssign) &&
-                        TimesHasPlayedPositions(innings, playerToPlace, [positionToAssign]) < 2)
+                        TimesHasPlayedPositions(innings, playerToPlace, INFIELD) < 2)
                         positionScores[positionToAssign] += 1;
                 }
 
@@ -62,19 +62,6 @@ public static class LineupService
             }
 
             var inningLineup = new Dictionary<int, Position>();
-            /*
-            foreach (var position in ALL_POSITIONS)
-            {
-                var player = playerPositionScores
-                    .Where(s => s.Position == position)
-                    .Where(s => !inningLineup.ContainsKey(s.Player))
-                    .OrderByDescending(s => s.Score)
-                    .First()
-                    .Player;
-
-                inningLineup.Add(player, position);
-            }
-            */
             foreach (var playerPositionScore in playerPositionScores.OrderByDescending(s => s.Score))
             {
                 if (inningLineup.ContainsKey(playerPositionScore.Player)) continue;
